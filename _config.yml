@@ -39,8 +39,6 @@ url: http://vah7id.github.io
 # and NOT your User repository (http://yourusername.github.io)
 # then add in the baseurl here, like this: "/repository-name"
 baseurl: ""
-
-
 permalink: /:title/
 
 # The release of Jekyll Now that you're using
