@@ -54,9 +54,11 @@ table {
 a {
 	color: hotpink !important;
 }
-h1 {
-}
 .post h1 {
 	line-height: 1.2 !important;
-	color: hotpink !important;
+	color: black !important;
+}
+
+.post h1 a {
+	color: black !important;
 }
