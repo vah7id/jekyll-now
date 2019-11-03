@@ -14,7 +14,8 @@ render(
 	<NavigationBar user={user} theme={Themes.lightblue} />  
 	<Link href={user.permalink}>    
 	<Avatar user={user} theme={Themes.lightblue} />  
-	</Link>  <Profile user={user} theme={Themes.lightblue} />  <Reviews user={user} theme={Themes.lightblue} />
+	</Link>  <Profile user={user} theme={Themes.lightblue} />  
+	<Reviews user={user} theme={Themes.lightblue} />
 );
 ```
 
