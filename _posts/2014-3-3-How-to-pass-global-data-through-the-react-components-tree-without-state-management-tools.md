@@ -6,7 +6,8 @@ title: How to pass global data through the react components tree without state m
 
 
 
-
+     
+     
 Imagine that we want to make a simple react app that doesn't require to import any state management tools like Redux or Mobx. What would be the easiest way to share data that can be considered “global” for a tree of React components such as the logged-in user data, translations, theme, or preferred language?
 
 In a typical react application, I used to pass my global data that are required by many components within an application via props. But when the app gets bigger with several stateful components then you will face the ugly code style like below:
@@ -14,11 +15,11 @@ In a typical react application, I used to pass my global data that are required 
 
 ```
 render(  
-	<NavigationBar user={user} theme={Themes.lightblue} />  
-	<Link href={user.permalink}>    
-	<Avatar user={user} theme={Themes.lightblue} />  
-	</Link>  <Profile user={user} theme={Themes.lightblue} />  
-	<Reviews user={user} theme={Themes.lightblue} />
+  <NavigationBar user={user} theme={Themes.lightblue} />  
+  <Link href={user.permalink}>    
+  <Avatar user={user} theme={Themes.lightblue} />  
+  </Link>  <Profile user={user} theme={Themes.lightblue} />  
+  <Reviews user={user} theme={Themes.lightblue} />
 );
 ```
 
