@@ -2,12 +2,13 @@
 .highlight {
   padding: 5px;
   margin: 20px 0 20px 0;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 pre.highlight {
   border: 1px solid #ddd;
   background-color: #eee;
+  overflow: auto;
 }
 code {
   font-family:'Bitstream Vera Sans Mono','Courier', monospace;
