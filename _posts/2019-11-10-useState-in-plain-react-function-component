@@ -1,3 +1,10 @@
+---
+layout: post
+title: useState in plain react function component
+---
+
+
+
 Since I started to keep my react components state-less, I had to figure out a way to handle my global state inside the state-less component instead of passing several props from the class components. It might be your question now, why we started to keep doing that?
 
 1.  Since they are pure functions your assertions are very straightforward and we all know writing the unit test for stateful components is quite a hassle and therefore plain function components are generally preferable.
