@@ -23,14 +23,16 @@ function Increment(initialCount) {  const [state, setState] = useState(initialSt
 
 If you’re familiar with Redux you already know how useReducer works. In official docs mentioned alternative because useState implemented by useReducer and it can apply for many cases. Let have a quick look at a simple reducer as below:
 
-const **initialState** = 0;  
-const **reducer** = (state, action) => {  
+```
+const initialState = 0;  
+const reducer = (state, action) => {  
   switch (action) {  
-    case '**increment**': return state + 1;  
-    case '**decrement**': return state - 1;  
-    case '**reset**': return 0;  
+    case 'increment': return state + 1;  
+    case 'decrement': return state - 1;  
+    case 'reset': return 0;  
   }  
 };
+```
 
 Reducers specify how the application’s state changes in response to the action and always return the new state value. Here’s a simple usage of reducer in the state-less component.
 
@@ -52,4 +54,7 @@ Therefore we have an access to the current state in the children component and f
 
 ### Conclusion
 
-Sometimes I used to include redux to my react app to manage only one reducer and less than 2 actions and I had to define all actions and reducers and map them to my component by `connect`, `mapStateToProps` which was quite hassle. Now when we know how to make our state management easily it makes sense to use our own simple state management for those use cases.
+Sometimes I used to include redux to my react app to manage only one reducer and less than 2 actions and I had to define all actions and reducers and map them to my component by `connect`, `mapStateToProps` which was quite hassle. Now when we know how to make our state management easily it makes sense to use our own simple state management for those use cases.    
+
+
+
