@@ -14,7 +14,12 @@ Last weekend I got some spare time to dig into it and turns out react had those 
 useState is a hook that lets you to add a react state to function components (state-less). Just pass your initialState and it returns the state object, and a function to update it (setState) as below.
 
 ```
-function Increment(initialCount) {  const [state, setState] = useState(initialState);  return (    <button onClick={() => setState(state + 1)}>{state}</button>  );}
+function Increment(initialCount) {  
+  const [state, setState] = useState(initialState);  
+  return (
+    <button onClick={() => setState(state + 1)}>{state}</button>
+  );
+}
 ```
 
 ### useReducer
@@ -36,15 +41,126 @@ const reducer = (state, action) => {
 
 Reducers specify how the application’s state changes in response to the action and always return the new state value. Here’s a simple usage of reducer in the state-less component.
 
+```
+import React, { useReducer } from "react";
+
+const initialState = 0;
+
+const reducer = (state, action) => {
+  switch (action) {
+    case "increment":
+      return state + 1;
+    case "decrement":
+      return state - 1;
+    case "reset":
+      return 0;
+  }
+};
+
+const Counter = () => {
+  const [count, dispatch] = useReducer(reducer, initialState);
+  return (
+    <div>
+      {count}
+      <button onClick={() => dispatch("increment")}>+1</button>
+      <button onClick={() => dispatch("decrement")}>-1</button>
+      <button onClick={() => dispatch("reset")}>reset</button>
+    </div>
+  );
+};
+
+export default Counter;
+```
+
 ### useContext
 
 useContext provides a way to share values between components without having to explicitly pass a prop through every level of the tree. We using context when some data needs to be accessible by many components. Therefore to make the global state accessible for all components we just need to wrap our root component by context provider. Let’s quickly check how it works in the code below.
+
+```
+import React, { useContext } from "react";
+import ReactDOM from "react-dom";
+
+const state = {
+  user: {
+    first_name: "Fat",
+    last_name: "Joe"
+  }
+};
+
+const AppContext = React.createContext(state);
+
+function App() {
+  return (
+    <AppContext.Provider value={state}>
+      <NavigationBar />
+    </AppContext.Provider>
+  );
+}
+
+function NavigationBar(props) {
+  const state = useContext(AppContext);
+  return (
+    <>
+      {state.user.first_name} {state.user.last_name}
+    </>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+```
 
 ### Let the magic happen
 
 By these three hooks, we can easily combine them together and make our simple state management just by defining our own reducer and passing the current state to our AppContext wrapper.
 
 Then we have access to our global stare by props in any class component and function component. Look at the simple implementation as below.
+
+```
+import React, { createContext, useContext, useReducer } from "react";
+import ReactDOM from "react-dom";
+
+const initialState = {
+  name: "Fat Joe",
+  logged_in: false
+};
+
+const rootReducer = (state, action) => {
+  switch (action) {
+    case "init":
+      return state;
+  }
+};
+
+export const AppContext = createContext(initialState);
+
+export const AppProvider = ({ reducer, initialState, children }) => (
+  <AppContext.Provider value={useReducer(reducer, initialState)}>
+    {children}
+  </AppContext.Provider>
+);
+
+export const useStateValue = () => useContext(AppContext);
+
+function App() {
+  return (
+    <AppProvider
+      reducer={rootReducer}
+      initialState={initialState}
+      children={<Profile />}
+    />
+  );
+}
+
+function Profile() {
+  const state = useStateValue();
+  return <>{state[0].name}</>;
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+
+```
 
 First, we defined out most simple initial state and reducer then AppContext with initialState defined as a wrapper for our root component.
 
