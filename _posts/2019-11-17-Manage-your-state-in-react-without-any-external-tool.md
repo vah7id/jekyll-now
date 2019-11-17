@@ -70,6 +70,7 @@ const Counter = () => {
 };
 
 export default Counter;
+
 ```
 
 ### useContext
