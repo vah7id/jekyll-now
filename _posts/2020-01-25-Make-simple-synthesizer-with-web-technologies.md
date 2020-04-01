@@ -1,13 +1,13 @@
 ---
 layout: post
-title: Make your first simple synthesizer with web technologies
+title: Make your first simple synthesizer with web audio technologies
 ---
 
 ### Introduction
 
 Since I have started working on music production, audio web API became interesting for me to start experimenting the new ideas. Synthesizers allows musicians to create sounds never heard before and there are bunch of different synthesizers in the market for musicians and they're quite expensive as well. The idea that I'm working on these days is make the basic synthesizers with the web API's to start change the whole market issues and make the producing easier for the musicians.
 
-I started with most basic synthesizers that I can make with the current audio web API and then I can make the variety of synthesizers out of this project in future. Before getting started I suggest you to have a look at ***Web Audio API*** references on MDN.
+I started with most basic synthesizers that I can make with the current audio web API and then I can make the variety of synthesizers out of this project in future. Before getting started I suggest you to have a look at [Web Audio API](https://reactjs.org/blog/2019/02/06/react-v16.8.0.html) references on MDN.
 
 ### Getting Started
 
@@ -30,7 +30,7 @@ Let's start by creating a basic HTML page.
 </html>
 ```
 
-Perhaps the most important thing your synth needs is a keyboard. Luckily, I've created a little snippet of JavaScript that will add a virtual keyboard to your page. Import the ***Qwerty Hancock*** library which is an interactive HTML plugin-free keyboard for your web audio projects.
+Perhaps the most important thing your synth needs is a keyboard. Luckily, I've created a little snippet of JavaScript that will add a virtual keyboard to your page. Import the [Qwerty Hancock](https://stuartmemo.com/qwerty-hancock/) library which is an interactive HTML plugin-free keyboard for your web audio projects.
 
 Then add an empty div to your DOM with an id of "keyboard".
 
@@ -51,7 +51,7 @@ const keyboard = new QwertyHancock({
 });
 ```
 
-Qwerty Hancock provides us with two event listeners, keyUp and keyDown. These allow us to hook into the keyboard and write code that fires when the keyboard is pressed. It also tells us which note was pressed, and its corresponding frequency in ***hertz***. 
+Qwerty Hancock provides us with two event listeners, keyUp and keyDown. These allow us to hook into the keyboard and write code that fires when the keyboard is pressed. It also tells us which note was pressed, and its corresponding frequency in hertz. 
 
 ```
 keyboard.keyDown = (note, frequency) => {
@@ -134,5 +134,14 @@ osc2.detune.value = 10;
 ```
 
 Lovely, that was the basic synthesizer that I wanted to make and in the near future I'll come up with the different variety of opensource synthesizer on the web enviorment.
+
+I deployed the demo on netlify as below:    
+[https://unruffled-snyder-ae2474.netlify.com/](https://unruffled-snyder-ae2474.netlify.com/)
+
+Cheers.
+
+      
+
+
 
 
